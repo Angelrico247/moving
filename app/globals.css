@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta MoveME */
+  --color-ink: #2c2318;
+  --color-ink-soft: #3d3124;
+  --color-amber: #f9c649;
+  --color-amber-deep: #c49a0a;
+  --color-cream: #f5f4f2;
+  --color-paper: #fefcf8;
+  --color-slate: #9a8a78;
+  --color-line: #ddd0bf;
+  --color-teal: #5f8a6a;
+
+  /* Tipografía (vars inyectadas por next/font en layout.tsx) */
+  --font-display: var(--font-raleway), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-amber);
+  color: var(--color-ink);
+}
+
+/* Patrón sutil de "ruta" para fondos oscuros */
+.bg-route {
+  background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 0
+    );
+  background-size: 22px 22px;
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Línea de ruta animada (proceso) */
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Barra de progreso del hero slider */
+@keyframes hero-progress {
+  from { width: 0% }
+  to   { width: 100% }
+}
+.hero-progress {
+  animation: hero-progress 5.5s linear forwards;
+}
+
+/* Hero — fade-up premium con blur por elemento */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+.hero-animate {
+  opacity: 0;
+  animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Header — slide-in al cargar la página */
+@keyframes header-in {
+  from { opacity: 0; transform: translateY(-100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.header-slide-in {
+  animation: header-in 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* Botón con efecto brillo al hover */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: -80%;
+  width: 50%;
+  transform: skewX(-15deg);
+  background: rgba(255, 255, 255, 0.35);
+  transition: left 0.65s ease;
+}
+.btn-shine:hover::after {
+  left: 160%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
