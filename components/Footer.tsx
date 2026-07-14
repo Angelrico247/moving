@@ -12,7 +12,7 @@ export default function Footer() {
                 <Truck className="h-5 w-5" />
               </span>
               <span className="font-display text-xl font-extrabold tracking-tight">
-                En<span className="text-amber">Ruta</span>
+                Mov<span className="text-amber">Ing</span>
               </span>
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/70">

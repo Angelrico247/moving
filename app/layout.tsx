@@ -17,22 +17,22 @@ const barlow = Barlow({
 });
 
 export const metadata: Metadata = {
-  title: "EnRuta · Mudanzas sin estrés en Guadalajara",
+  title: "MovIng · Mudanzas sin estrés en Guadalajara",
   description:
     "Paquetes de mudanza por horas en Guadalajara: camión, cuadrilla y seguro incluidos. Cotiza tu mudanza local o foránea en minutos.",
   keywords: ["mudanzas guadalajara", "fletes guadalajara", "mudanza por horas", "camión de mudanza", "servicio de mudanza zapopan"],
   robots: { index: true, follow: true },
   openGraph: {
-    title: "EnRuta · Mudanzas sin estrés en Guadalajara",
+    title: "MovIng · Mudanzas sin estrés en Guadalajara",
     description:
       "Paquetes de mudanza por horas. Camión, cuadrilla y seguro incluidos. Precio cerrado, sin sorpresas.",
     type: "website",
     locale: "es_MX",
-    siteName: "EnRuta Mudanzas",
+    siteName: "MovIng Mudanzas",
   },
   twitter: {
     card: "summary_large_image",
-    title: "EnRuta · Mudanzas sin estrés en Guadalajara",
+    title: "MovIng · Mudanzas sin estrés en Guadalajara",
     description: "Paquetes de mudanza por horas. Camión, cuadrilla y seguro incluidos.",
   },
 };
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "MovingCompany",
-  name: "EnRuta Mudanzas",
+  name: "MovIng Mudanzas",
   description:
     "Paquetes de mudanza por horas en Guadalajara. Camión, cuadrilla y seguro incluidos. Precio cerrado, sin sorpresas.",
   url: "https://enruta.mx",

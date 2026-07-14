@@ -46,7 +46,7 @@ export default function Header() {
               scrolled ? "text-ink" : "text-white"
             }`}
           >
-            En<span className="text-amber">Ruta</span>
+            Mov<span className="text-amber">Ing</span>
           </span>
         </a>
 
@@ -136,7 +136,7 @@ export default function Header() {
           {/* Cabecera del drawer */}
           <div className="flex items-center justify-between border-b border-line px-6 py-5">
             <span className="font-display text-lg font-extrabold text-ink">
-              En<span className="text-amber">Ruta</span>
+              Mov<span className="text-amber">Ing</span>
             </span>
             <button
               onClick={() => setOpen(false)}
