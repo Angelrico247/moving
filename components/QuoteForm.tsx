@@ -66,9 +66,9 @@ export default function QuoteForm() {
               href={waLink(`Hola ${site.name}, quiero cotizar mi mudanza.`)}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 font-bold text-[#0b3d28] transition-transform hover:-translate-y-0.5"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-amber px-5 py-3 font-bold text-ink transition-transform hover:-translate-y-0.5"
             >
-              <Whatsapp className="h-5 w-5" />
+              <Whatsapp className="h-4 w-4 -translate-y-0.5" />
               Prefiero escribir directo
             </a>
           </div>

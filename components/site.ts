@@ -20,3 +20,4 @@ export const nav = [
   { label: "Opiniones", href: "#opiniones" },
   { label: "Preguntas", href: "#faq" },
 ];
+

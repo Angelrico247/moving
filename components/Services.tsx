@@ -1,24 +1,24 @@
 import Reveal from "./Reveal";
-import { Box, Sparkles, Warehouse, Globe, Piano, Shield } from "./icons";
+import { Packing, Sparkles, Storage, Delivery, Trolley, Safety } from "./icons";
 
 const services = [
   {
-    icon: Box,
+    icon: Packing,
     title: "Empaque profesional",
     desc: "Cajas, burbuja y etiquetado por cuarto. Tú abres y todo aparece donde va.",
   },
   {
-    icon: Piano,
+    icon: Trolley,
     title: "Objetos pesados",
     desc: "Pianos, cajas fuertes y muebles voluminosos con equipo y técnica adecuada.",
   },
   {
-    icon: Warehouse,
+    icon: Storage,
     title: "Almacenaje temporal",
     desc: "¿Aún no entregan tu casa? Guardamos tus cosas en bodega segura por días o meses.",
   },
   {
-    icon: Globe,
+    icon: Delivery,
     title: "Mudanza foránea",
     desc: "Salidas a otras ciudades del país con seguimiento y fecha de entrega cerrada.",
   },
@@ -28,7 +28,7 @@ const services = [
     desc: "Dejamos limpio el lugar que dejas para que recuperes tu depósito sin broncas.",
   },
   {
-    icon: Shield,
+    icon: Safety,
     title: "Seguro ampliado",
     desc: "Cobertura extra para artículos de alto valor. Tranquilidad de puerta a puerta.",
   },

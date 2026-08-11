@@ -25,7 +25,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-amber px-5 py-2.5 text-sm font-bold text-ink"
             >
-              <Whatsapp className="h-4 w-4" />
+              <Whatsapp className="h-4 w-4 -translate-y-0.5" />
               Cotizar por WhatsApp
             </a>
           </div>

@@ -1,9 +1,9 @@
-import { Shield, Clock, Check, Truck } from "./icons";
+import { Safety, DeliveryTime, Check, TruckLine } from "./icons";
 
 const items = [
-  { icon: Shield, text: "Carga 100% asegurada" },
-  { icon: Clock, text: "Llegamos puntuales o es gratis la 1ª hora" },
-  { icon: Truck, text: "Unidades propias y limpias" },
+  { icon: Safety, text: "Carga 100% asegurada" },
+  { icon: DeliveryTime, text: "Llegamos puntuales o es gratis la 1ª hora" },
+  { icon: TruckLine, text: "Unidades propias y limpias" },
   { icon: Check, text: "Precio cerrado, sin sorpresas" },
 ];
 

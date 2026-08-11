@@ -18,11 +18,11 @@ export default function FloatingWA() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"
-      className={`fixed bottom-6 right-6 z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-xl shadow-black/25 transition-all duration-500 hover:scale-110 ${
+      className={`fixed bottom-6 right-6 z-50 grid h-14 w-14 place-items-center rounded-full bg-amber text-ink shadow-xl shadow-black/25 transition-all duration-500 hover:scale-110 ${
         visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0 pointer-events-none"
       }`}
     >
-      <span className="absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-25" />
+      <span className="absolute inset-0 animate-ping rounded-full bg-amber opacity-25" />
       <Whatsapp className="relative h-7 w-7" />
     </a>
   );

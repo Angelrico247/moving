@@ -6,14 +6,6 @@ import { nav, site } from "./site";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -21,31 +13,15 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header
-      className={`header-slide-in fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "h-16 border-b border-line bg-cream/95 shadow-sm shadow-ink/8 backdrop-blur-xl"
-          : "h-20 bg-transparent"
-      }`}
-    >
+    <header className="header-slide-in fixed inset-x-0 top-0 z-50 h-20 border-b border-line bg-white">
       <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-5 sm:px-6">
 
         {/* ── Logo ───────────────────────────────────────────── */}
         <a href="#top" className="group flex items-center gap-2.5">
-          <span
-            className={`grid h-9 w-9 place-items-center rounded-xl transition-all duration-300 group-hover:-rotate-6 group-hover:scale-110 ${
-              scrolled
-                ? "bg-ink text-amber"
-                : "border border-white/25 bg-white/15 text-amber backdrop-blur-sm"
-            }`}
-          >
+          <span className="grid h-9 w-9 place-items-center rounded-xl bg-ink text-amber transition-all duration-300 group-hover:-rotate-6 group-hover:scale-110">
             <Truck className="h-5 w-5" />
           </span>
-          <span
-            className={`font-display text-xl font-extrabold tracking-tight transition-colors duration-300 ${
-              scrolled ? "text-ink" : "text-white"
-            }`}
-          >
+          <span className="font-display text-xl font-extrabold tracking-tight text-ink">
             Mov<span className="text-amber">Ing</span>
           </span>
         </a>
@@ -56,15 +32,9 @@ export default function Header() {
             <a
               key={n.href}
               href={n.href}
-              className={`group relative text-sm font-medium transition-colors duration-300 ${
-                scrolled
-                  ? "text-slate hover:text-ink"
-                  : "text-white/75 hover:text-white"
-              }`}
+              className="text-sm font-semibold text-ink transition-colors duration-300 hover:text-ink/70"
             >
               {n.label}
-              {/* Underline que crece de izquierda a derecha al hover */}
-              <span className="absolute -bottom-0.5 left-0 h-px w-0 rounded-full bg-amber transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </nav>
@@ -73,17 +43,9 @@ export default function Header() {
         <div className="hidden items-center gap-4 md:flex">
           <a
             href={site.phoneHref}
-            className={`flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${
-              scrolled
-                ? "text-slate hover:text-ink"
-                : "text-white/75 hover:text-white"
-            }`}
+            className="flex items-center gap-2 text-sm font-semibold text-slate transition-colors duration-300 hover:text-ink"
           >
-            <Phone
-              className={`h-4 w-4 transition-colors duration-300 ${
-                scrolled ? "text-amber-deep" : "text-amber"
-              }`}
-            />
+            <Phone className="h-4 w-4 text-amber-deep" />
             {site.phoneDisplay}
           </a>
 
@@ -98,9 +60,7 @@ export default function Header() {
         {/* ── Hamburger ──────────────────────────────────────── */}
         <button
           onClick={() => setOpen((v) => !v)}
-          className={`grid h-10 w-10 place-items-center rounded-lg transition-all duration-300 md:hidden ${
-            scrolled ? "text-ink hover:bg-line" : "text-white hover:bg-white/10"
-          }`}
+          className="grid h-10 w-10 place-items-center rounded-lg text-ink transition-all duration-300 hover:bg-line md:hidden"
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
         >
           <span

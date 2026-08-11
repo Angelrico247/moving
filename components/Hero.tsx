@@ -74,7 +74,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative h-screen min-h-150 overflow-hidden"
+      className="relative h-[70vh] min-h-150 overflow-hidden"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
