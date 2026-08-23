@@ -1,5 +1,10 @@
-import Reveal from "./Reveal";
-import { Quote, Star } from "./icons";
+"use client";
+
+import { useCallback, useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Star } from "./icons";
+
+const BG = "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1920&q=75";
 
 const reviews = [
   {
@@ -22,77 +27,96 @@ const reviews = [
   },
 ];
 
+const INTERVAL = 6000;
+
 export default function Testimonials() {
+  const [current, setCurrent] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const go = useCallback(
+    (idx: number) => setCurrent((idx + reviews.length) % reviews.length),
+    []
+  );
+  const next = useCallback(() => go(current + 1), [current, go]);
+
+  useEffect(() => {
+    timerRef.current = setTimeout(next, INTERVAL);
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [current, next]);
+
+  const r = reviews[current];
+
   return (
-    <section id="opiniones" className="bg-paper py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
-        <Reveal>
-          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
-            <div className="max-w-xl">
-              <span className="text-sm font-extrabold uppercase tracking-widest text-amber-deep">
-                Lo que dicen
-              </span>
-              <h2 className="mt-3 font-display text-4xl font-black tracking-tight text-ink sm:text-5xl">
-                Mudanzas que terminan en gracias
-              </h2>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="flex text-amber">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-5 w-5" />
-                ))}
+    <section id="opiniones" className="relative h-[60vh] overflow-hidden bg-black">
+      <div className="absolute inset-0">
+        <img src={BG} alt="" className="h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-black/20" />
+      </div>
+
+      <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-center px-5 sm:px-6">
+        <span className="text-sm font-extrabold uppercase tracking-widest text-amber">
+          Lo que dicen
+        </span>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="mt-5 max-w-2xl"
+          >
+            <blockquote className="font-display text-3xl font-black leading-snug text-cream sm:text-4xl">
+              &ldquo;{r.text}&rdquo;
+            </blockquote>
+
+            <div className="mt-8 flex items-center gap-4">
+              <img
+                src={r.avatar}
+                alt={r.name}
+                className="h-14 w-14 rounded-full object-cover ring-2 ring-cream/30"
+              />
+              <div>
+                <p className="font-bold text-cream">{r.name},</p>
+                <p className="text-sm text-cream/70">{r.place}</p>
               </div>
-              <span className="text-sm font-semibold text-ink">
-                4.9 / 5 · +400 reseñas
-              </span>
             </div>
+          </motion.div>
+        </AnimatePresence>
+
+        <div className="mt-10 flex flex-wrap items-center gap-6">
+          <a
+            href="#cotizar"
+            className="inline-flex items-center gap-2 rounded-full bg-amber px-6 py-3 text-base font-bold text-ink transition-transform hover:-translate-y-0.5"
+          >
+            Más reseñas
+          </a>
+          <div className="flex items-center gap-2">
+            <div className="flex text-amber">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="h-5 w-5" />
+              ))}
+            </div>
+            <span className="text-sm font-semibold text-cream/80">
+              4.9 / 5 · +400 reseñas
+            </span>
           </div>
-        </Reveal>
+        </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {reviews.map((r, i) => (
-            <Reveal key={r.name} delay={i * 90}>
-              <figure className="flex h-full flex-col overflow-hidden border border-line bg-cream">
-                {/* Franja superior con foto de fondo desenfocada */}
-                <div className="relative h-28 overflow-hidden">
-                  <img
-                    src={r.avatar}
-                    alt=""
-                    aria-hidden
-                    className="h-full w-full scale-150 object-cover blur-lg brightness-75"
-                  />
-                  <div className="absolute inset-0 bg-ink/40" />
-                  {/* Avatar circular centrado */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <img
-                      src={r.avatar}
-                      alt={r.name}
-                      width={64}
-                      height={64}
-                      className="h-16 w-16 object-cover ring-4 ring-cream/30"
-                    />
-                  </div>
-                  {/* Estrellas sobre la franja */}
-                  <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-0.5 text-amber">
-                    {Array.from({ length: 5 }).map((_, j) => (
-                      <Star key={j} className="h-3.5 w-3.5" />
-                    ))}
-                  </div>
-                </div>
-
-                {/* Contenido de la tarjeta */}
-                <div className="flex flex-1 flex-col p-7">
-                  <Quote className="h-7 w-7 text-amber" />
-                  <blockquote className="mt-3 flex-1 text-[15px] leading-relaxed text-ink/85">
-                    {r.text}
-                  </blockquote>
-                  <figcaption className="mt-6 border-t border-line pt-5">
-                    <p className="font-semibold text-ink">{r.name}</p>
-                    <p className="text-sm text-slate">{r.place}</p>
-                  </figcaption>
-                </div>
-              </figure>
-            </Reveal>
+        <div className="mt-10 flex items-center gap-2">
+          {reviews.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => go(i)}
+              aria-label={`Ir a la reseña ${i + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === current ? "w-8 bg-amber" : "w-2 bg-cream/30 hover:bg-cream/60"
+              }`}
+            />
           ))}
         </div>
       </div>
