@@ -69,13 +69,13 @@ export default function Packages() {
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <span className="text-sm font-bold uppercase tracking-widest text-amber-deep">
+            <span className="text-sm font-extrabold uppercase tracking-widest text-amber-deep">
               Paga solo por el tiempo que necesitas
             </span>
-            <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-black tracking-tight text-ink sm:text-5xl">
               Paquetes por horas
             </h2>
-            <p className="mt-4 text-lg text-slate">
+            <p className="mt-4 text-lg font-bold text-slate">
               Eliges un bloque de horas con camión y cuadrilla incluidos. Si
               acabas antes, te queda de sobra; si necesitas más, la hora extra
               tiene precio fijo.
@@ -87,7 +87,7 @@ export default function Packages() {
           {packages.map((p, i) => (
             <Reveal key={p.name} delay={i * 90}>
               <div
-                className={`flex h-full flex-col overflow-hidden rounded-3xl border transition-transform hover:-translate-y-1 ${
+                className={`flex h-full flex-col overflow-hidden border transition-transform hover:-translate-y-1 ${
                   p.best
                     ? "border-transparent shadow-2xl shadow-ink/25 lg:-mt-4"
                     : "border-line"
@@ -109,11 +109,11 @@ export default function Packages() {
                   />
                   <div className="absolute inset-x-0 bottom-0 p-5">
                     <div className="flex items-center justify-between">
-                      <h3 className="font-display text-2xl font-extrabold text-cream">
+                      <h3 className="font-display text-2xl font-black text-cream">
                         {p.name}
                       </h3>
                       {p.best && (
-                        <span className="rounded-full bg-amber px-3 py-1 text-xs font-bold text-ink">
+                        <span className="bg-amber px-3 py-1 text-xs font-bold text-ink">
                           Más elegido
                         </span>
                       )}
@@ -139,7 +139,7 @@ export default function Packages() {
                     >
                       desde
                     </span>
-                    <span className="font-display text-5xl font-extrabold">
+                    <span className="font-display text-5xl font-black">
                       ${p.price}
                     </span>
                     <span

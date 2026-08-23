@@ -29,10 +29,10 @@ export default function Process() {
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <Reveal>
           <div className="max-w-2xl">
-            <span className="text-sm font-bold uppercase tracking-widest text-amber">
+            <span className="text-sm font-extrabold uppercase tracking-widest text-amber">
               Así de fácil
             </span>
-            <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-black tracking-tight sm:text-5xl">
               Mudarte en 4 pasos
             </h2>
           </div>
@@ -46,10 +46,10 @@ export default function Process() {
           />
           {steps.map((s, i) => (
             <Reveal key={s.n} delay={i * 90} className="relative lg:pr-8">
-              <span className="relative z-10 grid h-14 w-14 place-items-center rounded-2xl bg-amber font-display text-lg font-extrabold text-ink">
+              <span className="relative z-10 grid h-14 w-14 place-items-center bg-amber font-display text-lg font-black text-ink">
                 {s.n}
               </span>
-              <h3 className="mt-5 font-display text-xl font-bold">{s.title}</h3>
+              <h3 className="mt-5 font-display text-xl font-extrabold">{s.title}</h3>
               <p className="mt-2 max-w-xs text-sm leading-relaxed text-cream/70">
                 {s.desc}
               </p>

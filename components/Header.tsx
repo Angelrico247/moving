@@ -18,10 +18,10 @@ export default function Header() {
 
         {/* ── Logo ───────────────────────────────────────────── */}
         <a href="#top" className="group flex items-center gap-2.5">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-ink text-amber transition-all duration-300 group-hover:-rotate-6 group-hover:scale-110">
+          <span className="grid h-9 w-9 place-items-center rounded-full bg-ink text-amber transition-all duration-300 group-hover:-rotate-6 group-hover:scale-110">
             <Truck className="h-5 w-5" />
           </span>
-          <span className="font-display text-xl font-extrabold tracking-tight text-ink">
+          <span className="font-display text-xl font-black tracking-tight text-ink">
             Mov<span className="text-amber">Ing</span>
           </span>
         </a>
@@ -95,7 +95,7 @@ export default function Header() {
         >
           {/* Cabecera del drawer */}
           <div className="flex items-center justify-between border-b border-line px-6 py-5">
-            <span className="font-display text-lg font-extrabold text-ink">
+            <span className="font-display text-lg font-black text-ink">
               Mov<span className="text-amber">Ing</span>
             </span>
             <button
@@ -115,7 +115,7 @@ export default function Header() {
                 href={n.href}
                 onClick={() => setOpen(false)}
                 style={{ transitionDelay: open ? `${i * 45}ms` : "0ms" }}
-                className={`rounded-xl px-4 py-3 text-base font-medium text-ink transition-all duration-300 hover:bg-paper hover:pl-5 ${
+                className={`px-4 py-3 text-base font-medium text-ink transition-all duration-300 hover:bg-paper hover:pl-5 ${
                   open
                     ? "translate-x-0 opacity-100"
                     : "-translate-x-3 opacity-0"

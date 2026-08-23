@@ -8,10 +8,10 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <a href="#top" className="flex items-center gap-2.5">
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-amber text-ink">
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-amber text-ink">
                 <Truck className="h-5 w-5" />
               </span>
-              <span className="font-display text-xl font-extrabold tracking-tight">
+              <span className="font-display text-xl font-black tracking-tight">
                 Mov<span className="text-amber">Ing</span>
               </span>
             </a>

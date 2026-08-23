@@ -24,20 +24,20 @@ export default function WhyUs() {
         {/* Columna izquierda — texto */}
         <Reveal>
           <div>
-            <span className="text-sm font-bold uppercase tracking-widest text-amber-deep">
+            <span className="text-sm font-extrabold uppercase tracking-widest text-amber-deep">
               Por qué EnRuta
             </span>
-            <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-black tracking-tight text-ink sm:text-5xl">
               Una mudanza que no se siente como una bronca
             </h2>
             <ul className="mt-8 space-y-6">
               {points.map((p) => (
                 <li key={p.title} className="flex gap-4">
-                  <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-teal/15 text-teal">
+                  <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center bg-teal/15 text-teal">
                     <Check className="h-4 w-4" />
                   </span>
                   <div>
-                    <h3 className="font-display text-lg font-bold text-ink">
+                    <h3 className="font-display text-lg font-extrabold text-ink">
                       {p.title}
                     </h3>
                     <p className="mt-1 text-sm leading-relaxed text-slate">
@@ -52,7 +52,7 @@ export default function WhyUs() {
 
         {/* Columna derecha — foto con stats overlay */}
         <Reveal delay={120}>
-          <div className="relative overflow-hidden rounded-3xl min-h-[300px] lg:h-[520px]">
+          <div className="relative overflow-hidden min-h-[300px] lg:h-[520px]">
             <Image
               src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=900&q=80"
               alt="Equipo EnRuta en acción"
@@ -65,7 +65,7 @@ export default function WhyUs() {
 
             {/* Stats superpuestos */}
             <div className="absolute inset-0 flex flex-col justify-end p-8 text-cream">
-              <p className="font-display text-7xl font-extrabold leading-none text-amber">
+              <p className="font-display text-7xl font-black leading-none text-amber">
                 98%
               </p>
               <p className="mt-2 max-w-xs text-base text-cream/80">
@@ -73,11 +73,11 @@ export default function WhyUs() {
               </p>
               <div className="mt-6 grid grid-cols-2 gap-5 border-t border-cream/20 pt-5">
                 <div>
-                  <p className="font-display text-2xl font-extrabold">+5 años</p>
+                  <p className="font-display text-2xl font-black">+5 años</p>
                   <p className="text-sm text-cream/60">moviendo Guadalajara</p>
                 </div>
                 <div>
-                  <p className="font-display text-2xl font-extrabold">0 letras chiquitas</p>
+                  <p className="font-display text-2xl font-black">0 letras chiquitas</p>
                   <p className="text-sm text-cream/60">en tu cotización</p>
                 </div>
               </div>

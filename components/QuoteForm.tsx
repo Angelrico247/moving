@@ -43,22 +43,22 @@ export default function QuoteForm() {
   };
 
   const field =
-    "w-full rounded-xl border border-line bg-cream px-4 py-3 text-ink placeholder:text-slate/60 outline-none transition-colors focus:border-amber focus:bg-paper";
+    "w-full border border-line bg-cream px-4 py-3 text-ink placeholder:text-slate/60 outline-none transition-colors focus:border-amber focus:bg-paper";
   const label = "mb-1.5 block text-sm font-semibold text-ink";
 
   return (
     <section id="cotizar" className="bg-cream py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
-        <div className="grid items-center gap-10 rounded-[2rem] bg-ink p-8 text-cream sm:p-12 lg:grid-cols-[0.9fr_1.1fr] bg-route">
+        <div className="grid items-center gap-10 bg-ink p-8 text-cream sm:p-12 lg:grid-cols-[0.9fr_1.1fr] bg-route">
           {/* Lado izquierdo */}
           <div>
-            <span className="text-sm font-bold uppercase tracking-widest text-amber">
+            <span className="text-sm font-extrabold uppercase tracking-widest text-amber">
               Cotización gratis
             </span>
-            <h2 className="mt-3 font-display text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-black leading-tight tracking-tight sm:text-5xl">
               Dinos qué mueves y te damos precio cerrado
             </h2>
-            <p className="mt-4 max-w-md text-cream/75">
+            <p className="mt-4 max-w-md font-bold text-cream/75">
               Llena el formulario y te llega tu cotización por WhatsApp en
               minutos. Sin compromiso y sin letras chiquitas.
             </p>
@@ -74,13 +74,13 @@ export default function QuoteForm() {
           </div>
 
           {/* Formulario */}
-          <div className="rounded-3xl bg-paper p-6 sm:p-8">
+          <div className="bg-paper p-6 sm:p-8">
             {sent ? (
               <div className="flex h-full flex-col items-center justify-center py-10 text-center">
-                <span className="grid h-16 w-16 place-items-center rounded-full bg-teal/15 text-teal">
+                <span className="grid h-16 w-16 place-items-center bg-teal/15 text-teal">
                   <Check className="h-8 w-8" />
                 </span>
-                <h3 className="mt-5 font-display text-2xl font-extrabold text-ink">
+                <h3 className="mt-5 font-display text-2xl font-black text-ink">
                   ¡Listo, {form.nombre || "vecino"}!
                 </h3>
                 <p className="mt-2 max-w-xs text-slate">

@@ -110,21 +110,21 @@ export default function Hero() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="max-w-2xl text-cream"
+              className="max-w-4xl text-cream"
             >
               {/* Badge */}
               <motion.span
                 variants={textItem}
-                className="inline-flex items-center gap-2 rounded-full border border-cream/20 bg-cream/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-cream/80 backdrop-blur-sm"
+                className="inline-flex items-center gap-2 border border-cream/20 bg-cream/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-cream/80 backdrop-blur-sm"
               >
-                <span className="h-2 w-2 animate-pulse rounded-full bg-amber" />
+                <span className="h-2 w-2 animate-pulse bg-amber" />
                 {slides[current].tag}
               </motion.span>
 
               {/* Headline */}
               <motion.h1
                 variants={textItem}
-                className="mt-5 font-display text-5xl font-black leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl"
+                className="mt-5 font-display text-6xl font-black leading-[0.98] tracking-tight sm:text-7xl lg:text-8xl"
               >
                 {slides[current].headline}
                 <br />
@@ -136,7 +136,7 @@ export default function Hero() {
               {/* Subtítulo */}
               <motion.p
                 variants={textItem}
-                className="mt-6 max-w-lg text-lg leading-relaxed text-cream/80"
+                className="mt-6 max-w-lg text-lg font-bold leading-relaxed text-cream/80"
               >
                 {slides[current].sub}
               </motion.p>

@@ -32,15 +32,15 @@ export default function Faq() {
     <section id="faq" className="bg-paper py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-5 sm:px-6">
         <div className="text-center">
-          <span className="text-sm font-bold uppercase tracking-widest text-amber-deep">
+          <span className="text-sm font-extrabold uppercase tracking-widest text-amber-deep">
             Preguntas frecuentes
           </span>
-          <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
+          <h2 className="mt-3 font-display text-4xl font-black tracking-tight text-ink sm:text-5xl">
             Antes de que preguntes
           </h2>
         </div>
 
-        <div className="mt-12 divide-y divide-line rounded-3xl border border-line">
+        <div className="mt-12 divide-y divide-line border border-line">
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
@@ -50,7 +50,7 @@ export default function Faq() {
                   className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-display text-lg font-bold text-ink">
+                  <span className="font-display text-lg font-extrabold text-ink">
                     {f.q}
                   </span>
                   <span

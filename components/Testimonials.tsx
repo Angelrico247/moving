@@ -29,10 +29,10 @@ export default function Testimonials() {
         <Reveal>
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div className="max-w-xl">
-              <span className="text-sm font-bold uppercase tracking-widest text-amber-deep">
+              <span className="text-sm font-extrabold uppercase tracking-widest text-amber-deep">
                 Lo que dicen
               </span>
-              <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
+              <h2 className="mt-3 font-display text-4xl font-black tracking-tight text-ink sm:text-5xl">
                 Mudanzas que terminan en gracias
               </h2>
             </div>
@@ -52,7 +52,7 @@ export default function Testimonials() {
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {reviews.map((r, i) => (
             <Reveal key={r.name} delay={i * 90}>
-              <figure className="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-cream">
+              <figure className="flex h-full flex-col overflow-hidden border border-line bg-cream">
                 {/* Franja superior con foto de fondo desenfocada */}
                 <div className="relative h-28 overflow-hidden">
                   <img
@@ -69,7 +69,7 @@ export default function Testimonials() {
                       alt={r.name}
                       width={64}
                       height={64}
-                      className="h-16 w-16 rounded-full object-cover ring-4 ring-cream/30"
+                      className="h-16 w-16 object-cover ring-4 ring-cream/30"
                     />
                   </div>
                   {/* Estrellas sobre la franja */}

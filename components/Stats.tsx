@@ -60,7 +60,7 @@ export default function Stats() {
               transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="text-center"
             >
-              <p className="font-display text-5xl font-extrabold text-amber sm:text-6xl">
+              <p className="font-display text-5xl font-black text-amber sm:text-6xl">
                 <Counter
                   prefix={s.prefix}
                   to={s.to}
