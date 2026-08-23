@@ -124,27 +124,12 @@ export default function Hero() {
               {/* Headline */}
               <motion.h1
                 variants={textItem}
-                className="mt-5 font-display text-5xl font-extrabold leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl"
+                className="mt-5 font-display text-5xl font-black leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl"
               >
                 {slides[current].headline}
                 <br />
                 <span className="relative inline-block text-amber">
                   {slides[current].highlight}
-                  <svg
-                    aria-hidden
-                    viewBox="0 0 300 18"
-                    className="absolute -bottom-1 left-0 w-full"
-                    preserveAspectRatio="none"
-                  >
-                    <path
-                      d="M4 14 C 80 4, 220 4, 296 10"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="5"
-                      strokeLinecap="round"
-                      className="text-amber/50"
-                    />
-                  </svg>
                 </span>
               </motion.h1>
 
