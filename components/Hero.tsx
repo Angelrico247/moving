@@ -96,7 +96,7 @@ export default function Hero() {
       </AnimatePresence>
 
       {/* Overlay oscuro */}
-      <div className="absolute inset-0 bg-ink/65" />
+      <div className="absolute inset-0 bg-black/65" />
       {/* Patrón de puntos */}
       <div className="absolute inset-0 bg-route opacity-40" />
 
