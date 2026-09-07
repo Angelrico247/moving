@@ -48,7 +48,7 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="bg-ink py-16 sm:py-20 bg-route">
+    <section className="bg-brown py-16 sm:py-20 bg-route">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <div className="grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-4">
           {stats.map((s, i) => (
@@ -68,7 +68,7 @@ export default function Stats() {
                   decimals={s.decimals}
                 />
               </p>
-              <p className="mt-3 text-sm leading-snug text-cream/65">{s.label}</p>
+              <p className="mt-3 text-sm leading-snug text-cream/80">{s.label}</p>
             </motion.div>
           ))}
         </div>

@@ -49,7 +49,7 @@ export default function QuoteForm() {
   return (
     <section id="cotizar" className="bg-cream py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
-        <div className="grid items-center gap-10 bg-ink p-8 text-cream sm:p-12 lg:grid-cols-[0.9fr_1.1fr] bg-route">
+        <div className="grid items-center gap-10 bg-brown p-8 text-cream sm:p-12 lg:grid-cols-[0.9fr_1.1fr] bg-route">
           {/* Lado izquierdo */}
           <div>
             <span className="text-sm font-extrabold uppercase tracking-widest text-amber">
@@ -58,7 +58,7 @@ export default function QuoteForm() {
             <h2 className="mt-3 font-display text-4xl font-black leading-tight tracking-tight sm:text-5xl">
               Dinos qué mueves y te damos precio cerrado
             </h2>
-            <p className="mt-4 max-w-md font-bold text-cream/75">
+            <p className="mt-4 max-w-md font-bold text-cream/90">
               Llena el formulario y te llega tu cotización por WhatsApp en
               minutos. Sin compromiso y sin letras chiquitas.
             </p>

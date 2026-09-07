@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Menu, Close, Phone, Truck } from "./icons";
+import { Menu, Close, Phone } from "./icons";
+import { Logo } from "./Logo";
 import { nav, site } from "./site";
 
 export default function Header() {
@@ -17,13 +18,11 @@ export default function Header() {
       <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-5 sm:px-6">
 
         {/* ── Logo ───────────────────────────────────────────── */}
-        <a href="#top" className="group flex items-center gap-2.5">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-ink text-amber transition-all duration-300 group-hover:-rotate-6 group-hover:scale-110">
-            <Truck className="h-5 w-5" />
-          </span>
-          <span className="font-display text-xl font-black tracking-tight text-ink">
-            Mov<span className="text-amber">Ing</span>
-          </span>
+        <a
+          href="#top"
+          className="[&_span:first-child]:transition-transform [&_span:first-child]:duration-300 hover:[&_span:first-child]:-rotate-6 hover:[&_span:first-child]:scale-110"
+        >
+          <Logo />
         </a>
 
         {/* ── Nav desktop ────────────────────────────────────── */}
@@ -95,9 +94,7 @@ export default function Header() {
         >
           {/* Cabecera del drawer */}
           <div className="flex items-center justify-between border-b border-line px-6 py-5">
-            <span className="font-display text-lg font-black text-ink">
-              Mov<span className="text-amber">Ing</span>
-            </span>
+            <Logo size="sm" />
             <button
               onClick={() => setOpen(false)}
               className="grid h-9 w-9 place-items-center rounded-lg text-ink hover:bg-line"

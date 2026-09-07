@@ -124,11 +124,11 @@ export default function Hero() {
               {/* Headline */}
               <motion.h1
                 variants={textItem}
-                className="mt-5 font-display text-6xl font-black leading-[0.98] tracking-tight sm:text-7xl lg:text-8xl"
+                className="mt-5 font-display text-5xl font-extrabold leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl"
               >
                 {slides[current].headline}
                 <br />
-                <span className="relative inline-block text-amber">
+                <span className="relative inline-block text-cream">
                   {slides[current].highlight}
                 </span>
               </motion.h1>

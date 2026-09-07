@@ -25,6 +25,40 @@ export function Truck(props: IconProps) {
   );
 }
 
+/** Camión de mudanza más detallado (cabina + caja con duelas) — para el
+ * isotipo del logo, donde el trazo simple de Truck se ve pobre a tamaño
+ * grande. Del set "Moving Service Icons". */
+export function TruckDetailed(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={3.4}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <line x1="41.2" y1="44.3" x2="23" y2="44.3" />
+      <path d="M58.1,38.3v1.7c0,2.4-1.9,4.3-4.3,4.3h-.8" />
+      <path d="M28.9,37h5.8s0-20.7,0-20.7h11.9l10.2,9.7c.8.8,1.3,1.9,1.3,3.1v9.2" />
+      <polyline points="6.1 37 6.1 44.3 11.2 44.3" />
+      <polygon points="52.3 32.7 38.8 32.7 38.8 19.8 45.6 19.8 52.3 26.3 52.3 32.7" />
+      <circle cx="17.1" cy="46.8" r="6.4" />
+      <circle cx="17.1" cy="46.8" r="2.8" />
+      <circle cx="47.1" cy="46.8" r="6.4" />
+      <circle cx="47.1" cy="46.8" r="2.8" />
+      <line x1="39.4" y1="35.8" x2="41.4" y2="35.8" />
+      <path d="M58.1,37.7h-2.4c-1.1,0-2-.9-2-2s.2-1.1.6-1.4c.4-.4.9-.6,1.4-.6h2.4" />
+      <path d="M36.7,16.3v-2.5c0-1.7,1.3-3,3-3s1.6.3,2.1.9.9,1.3.9,2.1v2.5" />
+      <rect x="5.9" y="15" width="24" height="22" />
+      <line x1="11.9" y1="20" x2="11.9" y2="31" />
+      <line x1="17.9" y1="20" x2="17.9" y2="31" />
+      <line x1="23.9" y1="20" x2="23.9" y2="31" />
+    </svg>
+  );
+}
+
 export function Box(props: IconProps) {
   return (
     <svg {...base} {...props}>

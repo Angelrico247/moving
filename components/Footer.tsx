@@ -1,21 +1,17 @@
-import { Phone, Pin, Truck, Whatsapp } from "./icons";
+import { Phone, Pin, Whatsapp } from "./icons";
+import { Logo } from "./Logo";
 import { nav, site, waLink } from "./site";
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-cream bg-route">
+    <footer className="bg-brown text-cream bg-route">
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <a href="#top" className="flex items-center gap-2.5">
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-amber text-ink">
-                <Truck className="h-5 w-5" />
-              </span>
-              <span className="font-display text-xl font-black tracking-tight">
-                Mov<span className="text-amber">Ing</span>
-              </span>
+            <a href="#top">
+              <Logo />
             </a>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/70">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/85">
               Mudanzas por horas en {site.city}. Camión, cuadrilla y seguro, sin
               estrés y sin sorpresas.
             </p>
@@ -31,7 +27,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display text-sm font-bold uppercase tracking-widest text-cream/50">
+            <h3 className="font-display text-sm font-bold uppercase tracking-widest text-cream/60">
               Navega
             </h3>
             <ul className="mt-4 space-y-3">
@@ -39,7 +35,7 @@ export default function Footer() {
                 <li key={n.href}>
                   <a
                     href={n.href}
-                    className="text-sm text-cream/80 transition-colors hover:text-amber"
+                    className="text-sm text-cream/90 transition-colors hover:text-amber"
                   >
                     {n.label}
                   </a>
@@ -49,27 +45,27 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display text-sm font-bold uppercase tracking-widest text-cream/50">
+            <h3 className="font-display text-sm font-bold uppercase tracking-widest text-cream/60">
               Contacto
             </h3>
             <ul className="mt-4 space-y-3 text-sm">
               <li>
                 <a
                   href={site.phoneHref}
-                  className="flex items-center gap-2.5 text-cream/80 transition-colors hover:text-amber"
+                  className="flex items-center gap-2.5 text-cream/90 transition-colors hover:text-amber"
                 >
                   <Phone className="h-4 w-4 text-amber" />
                   {site.phoneDisplay}
                 </a>
               </li>
-              <li className="flex items-center gap-2.5 text-cream/80">
+              <li className="flex items-center gap-2.5 text-cream/90">
                 <Pin className="h-4 w-4 text-amber" />
                 {site.city}
               </li>
               <li>
                 <a
                   href={`mailto:${site.email}`}
-                  className="text-cream/80 transition-colors hover:text-amber"
+                  className="text-cream/90 transition-colors hover:text-amber"
                 >
                   {site.email}
                 </a>
@@ -78,7 +74,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-cream/10 pt-6 text-sm text-cream/50 sm:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-cream/10 pt-6 text-sm text-cream/60 sm:flex-row">
           <p>
             © {new Date().getFullYear()} {site.name}. Todos los derechos
             reservados.

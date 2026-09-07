@@ -25,7 +25,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="proceso" className="relative overflow-hidden bg-ink py-20 text-cream sm:py-28 bg-route">
+    <section id="proceso" className="relative overflow-hidden bg-brown py-20 text-cream sm:py-28 bg-route">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <Reveal>
           <div className="max-w-2xl">
@@ -50,7 +50,7 @@ export default function Process() {
                 {s.n}
               </span>
               <h3 className="mt-5 font-display text-xl font-extrabold">{s.title}</h3>
-              <p className="mt-2 max-w-xs text-sm leading-relaxed text-cream/70">
+              <p className="mt-2 max-w-xs text-sm leading-relaxed text-cream/85">
                 {s.desc}
               </p>
             </Reveal>
