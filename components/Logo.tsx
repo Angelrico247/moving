@@ -16,7 +16,7 @@ export function LogoMark({
   const s = SIZES[size];
   return (
     <span
-      className={`grid shrink-0 place-items-center rounded-full bg-ink text-amber ${s.mark} ${className}`}
+      className={`grid shrink-0 place-items-center rounded-full bg-brown text-white ${s.mark} ${className}`}
     >
       <TruckDetailed className={s.icon} />
     </span>
@@ -36,8 +36,11 @@ export function Logo({
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <LogoMark size={size} />
-      <span className={`font-display font-black tracking-tight ${s.text}`}>
-        Mov<span className="text-amber">Ing</span>
+      <span className="leading-none">
+        <span className={`block font-display font-bold tracking-tight text-heading ${s.text}`}>
+          Mov<span className="text-gold">Ing</span>
+        </span>
+        <span className="mt-1 block text-[11px] font-medium text-body">Mudanzas</span>
       </span>
     </span>
   );

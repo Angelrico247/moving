@@ -1,31 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Check, Whatsapp } from "./icons";
+import { Check } from "./icons";
 import { site, waLink } from "./site";
 
 const tipos = ["Departamento", "Casa", "Oficina", "Otro"];
 const paquetes = ["Express · 3 h", "Hogar · 6 h", "Total · jornada", "No sé aún"];
 
+/** Franja café con el formulario de cotización (como "Request a quote" de MoveMe). El envío abre WhatsApp. */
 export default function QuoteForm() {
-  const [form, setForm] = useState({
-    nombre: "",
-    telefono: "",
-    tipo: tipos[0],
-    paquete: paquetes[1],
-    origen: "",
-    destino: "",
-    fecha: "",
-  });
+  const [form, setForm] = useState({ nombre: "", telefono: "", tipo: tipos[0], origen: "", destino: "", fecha: "", paquete: paquetes[1] });
   const [sent, setSent] = useState(false);
 
   const update =
-    (k: keyof typeof form) =>
-    (
-      e: React.ChangeEvent<
-        HTMLInputElement | HTMLSelectElement
-      >
-    ) =>
+    (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
       setForm((f) => ({ ...f, [k]: e.target.value }));
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -43,187 +31,78 @@ export default function QuoteForm() {
   };
 
   const field =
-    "w-full border border-line bg-cream px-4 py-3 text-ink placeholder:text-slate/60 outline-none transition-colors focus:border-amber focus:bg-paper";
-  const label = "mb-1.5 block text-sm font-semibold text-ink";
+    "h-12 w-full rounded-full border-0 bg-white/25 px-5 text-[14px] text-white placeholder:text-white/80 outline-none transition focus:bg-white/35 focus-visible:ring-2 focus-visible:ring-white [&>option]:text-heading";
+  const label = "mb-2 block font-display text-[14px] font-semibold text-white";
 
   return (
-    <section id="cotizar" className="bg-cream py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
-        <div className="grid items-center gap-10 bg-brown p-8 text-cream sm:p-12 lg:grid-cols-[0.9fr_1.1fr] bg-route">
-          {/* Lado izquierdo */}
-          <div>
-            <span className="text-sm font-extrabold uppercase tracking-widest text-amber">
-              Cotización gratis
+    <section id="cotizar" className="scroll-mt-20 bg-brown py-16 sm:py-20">
+      <div className="mx-auto max-w-[1000px] px-5">
+        <p className="font-display text-[15px] font-semibold text-white">Cotiza tu mudanza sin costo</p>
+        <h2 className="mt-3 font-display text-5xl font-bold tracking-tight text-white sm:text-6xl">Pide tu cotización</h2>
+
+        {sent ? (
+          <div role="status" className="mt-10 flex items-center gap-4 rounded-3xl bg-white/20 p-6 text-white">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-brown">
+              <Check className="h-6 w-6" />
             </span>
-            <h2 className="mt-3 font-display text-4xl font-black leading-tight tracking-tight sm:text-5xl">
-              Dinos qué mueves y te damos precio cerrado
-            </h2>
-            <p className="mt-4 max-w-md font-bold text-cream/90">
-              Llena el formulario y te llega tu cotización por WhatsApp en
-              minutos. Sin compromiso y sin letras chiquitas.
+            <p className="text-[15px]">
+              ¡Listo, {form.nombre || "vecino"}! Abrimos WhatsApp con tu información. Si no se abrió,{" "}
+              <a className="font-semibold underline" href={waLink(`Hola ${site.name}, quiero cotizar mi mudanza.`)} target="_blank" rel="noopener noreferrer">
+                toca aquí
+              </a>
+              .{" "}
+              <button type="button" onClick={() => setSent(false)} className="font-semibold underline">
+                Enviar otra cotización
+              </button>
             </p>
-            <a
-              href={waLink(`Hola ${site.name}, quiero cotizar mi mudanza.`)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-amber px-5 py-3 font-bold text-ink transition-transform hover:-translate-y-0.5"
-            >
-              <Whatsapp className="h-4 w-4 -translate-y-0.5" />
-              Prefiero escribir directo
-            </a>
           </div>
-
-          {/* Formulario */}
-          <div className="bg-paper p-6 sm:p-8">
-            {sent ? (
-              <div className="flex h-full flex-col items-center justify-center py-10 text-center">
-                <span className="grid h-16 w-16 place-items-center bg-teal/15 text-teal">
-                  <Check className="h-8 w-8" />
-                </span>
-                <h3 className="mt-5 font-display text-2xl font-black text-ink">
-                  ¡Listo, {form.nombre || "vecino"}!
-                </h3>
-                <p className="mt-2 max-w-xs text-slate">
-                  Abrimos WhatsApp con tu información. Si no se abrió,{" "}
-                  <a
-                    className="font-semibold text-amber-deep underline"
-                    href={waLink(`Hola ${site.name}, quiero cotizar mi mudanza.`)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    toca aquí
-                  </a>
-                  .
-                </p>
-                <button
-                  onClick={() => setSent(false)}
-                  className="mt-6 text-sm font-semibold text-ink underline"
-                >
-                  Enviar otra cotización
-                </button>
+        ) : (
+          <form onSubmit={handleSubmit} className="mt-10 grid gap-x-4 gap-y-5">
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label className={label} htmlFor="nombre">Nombre</label>
+                <input id="nombre" required value={form.nombre} onChange={update("nombre")} placeholder="Nombre" autoComplete="name" className={field} />
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div>
-                    <label className={label} htmlFor="nombre">
-                      Nombre
-                    </label>
-                    <input
-                      id="nombre"
-                      required
-                      value={form.nombre}
-                      onChange={update("nombre")}
-                      placeholder="Tu nombre"
-                      className={field}
-                    />
-                  </div>
-                  <div>
-                    <label className={label} htmlFor="telefono">
-                      Teléfono
-                    </label>
-                    <input
-                      id="telefono"
-                      required
-                      type="tel"
-                      value={form.telefono}
-                      onChange={update("telefono")}
-                      placeholder="33 0000 0000"
-                      className={field}
-                    />
-                  </div>
-                </div>
+              <div>
+                <label className={label} htmlFor="telefono">Teléfono</label>
+                <input id="telefono" required type="tel" value={form.telefono} onChange={update("telefono")} placeholder="Teléfono" autoComplete="tel" className={field} />
+              </div>
+            </div>
 
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div>
-                    <label className={label} htmlFor="tipo">
-                      Tipo de lugar
-                    </label>
-                    <select
-                      id="tipo"
-                      value={form.tipo}
-                      onChange={update("tipo")}
-                      className={field}
-                    >
-                      {tipos.map((t) => (
-                        <option key={t}>{t}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className={label} htmlFor="paquete">
-                      Paquete
-                    </label>
-                    <select
-                      id="paquete"
-                      value={form.paquete}
-                      onChange={update("paquete")}
-                      className={field}
-                    >
-                      {paquetes.map((p) => (
-                        <option key={p}>{p}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div>
-                    <label className={label} htmlFor="origen">
-                      De (origen)
-                    </label>
-                    <input
-                      id="origen"
-                      required
-                      value={form.origen}
-                      onChange={update("origen")}
-                      placeholder="Colonia / zona"
-                      className={field}
-                    />
-                  </div>
-                  <div>
-                    <label className={label} htmlFor="destino">
-                      A (destino)
-                    </label>
-                    <input
-                      id="destino"
-                      required
-                      value={form.destino}
-                      onChange={update("destino")}
-                      placeholder="Colonia / zona"
-                      className={field}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className={label} htmlFor="fecha">
-                    Fecha tentativa
-                  </label>
-                  <input
-                    id="fecha"
-                    type="date"
-                    value={form.fecha}
-                    onChange={update("fecha")}
-                    className={field}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="group mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-amber px-6 py-3.5 text-base font-bold text-ink transition-transform hover:-translate-y-0.5"
-                >
-                  Obtener mi cotización
-                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-                </button>
-                <p className="text-center text-xs text-slate">
-                  Al enviar abrimos WhatsApp con tus datos listos. No guardamos
-                  nada sin tu permiso.
-                </p>
-              </form>
-            )}
-          </div>
-        </div>
+            <div className="grid items-end gap-5 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1fr_1fr_auto]">
+              <div>
+                <label className={label} htmlFor="tipo">Tipo</label>
+                <select id="tipo" value={form.tipo} onChange={update("tipo")} className={field}>
+                  {tipos.map((t) => <option key={t}>{t}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className={label} htmlFor="origen">Desde</label>
+                <input id="origen" required value={form.origen} onChange={update("origen")} placeholder="Colonia/Ciudad" className={field} />
+              </div>
+              <div>
+                <label className={label} htmlFor="destino">Hasta</label>
+                <input id="destino" required value={form.destino} onChange={update("destino")} placeholder="Colonia/Ciudad" className={field} />
+              </div>
+              <div>
+                <label className={label} htmlFor="fecha">Fecha</label>
+                <input id="fecha" type="date" value={form.fecha} onChange={update("fecha")} className={field} />
+              </div>
+              <div>
+                <label className={label} htmlFor="paquete">Paquete</label>
+                <select id="paquete" value={form.paquete} onChange={update("paquete")} className={field}>
+                  {paquetes.map((p) => <option key={p}>{p}</option>)}
+                </select>
+              </div>
+              <button
+                type="submit"
+                className="h-12 rounded-full bg-white px-8 font-display text-[13px] font-semibold uppercase tracking-wide text-heading transition-colors hover:bg-amber"
+              >
+                Enviar
+              </button>
+            </div>
+          </form>
+        )}
       </div>
     </section>
   );

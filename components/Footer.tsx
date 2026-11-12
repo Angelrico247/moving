@@ -1,93 +1,63 @@
 import { Phone, Pin, Whatsapp } from "./icons";
-import { Logo } from "./Logo";
-import { nav, site, waLink } from "./site";
+import { site, waLink } from "./site";
 
+/** Pie de página: tres columnas café (dirección, escríbenos, contacto), mapa y línea de derechos. */
 export default function Footer() {
   return (
-    <footer className="bg-brown text-cream bg-route">
-      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-6">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
-          <div>
-            <a href="#top">
-              <Logo />
-            </a>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/85">
-              Mudanzas por horas en {site.city}. Camión, cuadrilla y seguro, sin
-              estrés y sin sorpresas.
+    <footer id="contacto" className="scroll-mt-20">
+      <div className="bg-brown text-white">
+        <div className="mx-auto grid max-w-[1000px] gap-10 px-5 py-16 text-center md:grid-cols-3 md:gap-0">
+          <div className="md:border-r md:border-white/20 md:px-6">
+            <h3 className="font-display text-xl font-semibold">Dirección</h3>
+            <p className="mt-6 flex items-center justify-center gap-2 text-[15px] leading-relaxed">
+              <Pin className="h-4 w-4 shrink-0" aria-hidden />
+              {site.city}
             </p>
-            <a
-              href={waLink(`Hola ${site.name}, quiero cotizar mi mudanza.`)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-amber px-5 py-2.5 text-sm font-bold text-ink"
-            >
-              <Whatsapp className="h-4 w-4 -translate-y-0.5" />
-              Cotizar por WhatsApp
-            </a>
           </div>
 
-          <div>
-            <h3 className="font-display text-sm font-bold uppercase tracking-widest text-cream/60">
-              Navega
-            </h3>
-            <ul className="mt-4 space-y-3">
-              {nav.map((n) => (
-                <li key={n.href}>
-                  <a
-                    href={n.href}
-                    className="text-sm text-cream/90 transition-colors hover:text-amber"
-                  >
-                    {n.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          <div className="md:border-r md:border-white/20 md:px-6">
+            <h3 className="font-display text-xl font-semibold">Escríbenos</h3>
+            <div className="mt-5 flex justify-center gap-3">
+              <a
+                href={waLink(`Hola ${site.name}, quiero cotizar mi mudanza.`)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp (abre en una pestaña nueva)"
+                className="grid h-[52px] w-[52px] place-items-center rounded-full bg-white text-heading transition-colors hover:bg-amber"
+              >
+                <Whatsapp className="h-5 w-5" />
+              </a>
+              <a
+                href={site.phoneHref}
+                aria-label={`Llamar al ${site.phoneDisplay}`}
+                className="grid h-[52px] w-[52px] place-items-center rounded-full bg-white text-heading transition-colors hover:bg-amber"
+              >
+                <Phone className="h-5 w-5" />
+              </a>
+            </div>
           </div>
 
-          <div>
-            <h3 className="font-display text-sm font-bold uppercase tracking-widest text-cream/60">
-              Contacto
-            </h3>
-            <ul className="mt-4 space-y-3 text-sm">
-              <li>
-                <a
-                  href={site.phoneHref}
-                  className="flex items-center gap-2.5 text-cream/90 transition-colors hover:text-amber"
-                >
-                  <Phone className="h-4 w-4 text-amber" />
-                  {site.phoneDisplay}
-                </a>
-              </li>
-              <li className="flex items-center gap-2.5 text-cream/90">
-                <Pin className="h-4 w-4 text-amber" />
-                {site.city}
-              </li>
-              <li>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="text-cream/90 transition-colors hover:text-amber"
-                >
-                  {site.email}
-                </a>
-              </li>
-            </ul>
+          <div className="md:px-6">
+            <h3 className="font-display text-xl font-semibold">Contacto</h3>
+            <p className="mt-6 text-[15px] leading-relaxed">
+              <a href={site.phoneHref} className="font-display font-semibold hover:text-amber">{site.phoneDisplay}</a>
+              <br />
+              <a href={`mailto:${site.email}`} className="hover:text-amber">{site.email}</a>
+            </p>
           </div>
         </div>
+      </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-cream/10 pt-6 text-sm text-cream/60 sm:flex-row">
-          <p>
-            © {new Date().getFullYear()} {site.name}. Todos los derechos
-            reservados.
-          </p>
-          <div className="flex gap-6">
-            <a href="#" className="transition-colors hover:text-cream">
-              Aviso de privacidad
-            </a>
-            <a href="#" className="transition-colors hover:text-cream">
-              Términos
-            </a>
-          </div>
-        </div>
+      <iframe
+        title={`Mapa: ${site.city}`}
+        src="https://www.google.com/maps?q=Guadalajara,+Jalisco&output=embed"
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        className="block h-[260px] w-full border-0 grayscale-[.4]"
+      />
+
+      <div className="bg-white py-6 text-center text-[13px] text-body">
+        © {new Date().getFullYear()} {site.name} Mudanzas. Todos los derechos reservados.
       </div>
     </footer>
   );

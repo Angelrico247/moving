@@ -1,10 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Star } from "./icons";
-
-const BG = "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1920&q=75";
+import { useEffect, useState } from "react";
+import { photos } from "./site";
 
 const reviews = [
   {
@@ -27,97 +24,72 @@ const reviews = [
   },
 ];
 
-const INTERVAL = 6000;
+const INTERVAL = 6500;
 
+/** "People about us": opiniones grandes en blanco sobre una foto con velo; avanzan solas y se pueden pausar. */
 export default function Testimonials() {
-  const [current, setCurrent] = useState(0);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const go = useCallback(
-    (idx: number) => setCurrent((idx + reviews.length) % reviews.length),
-    []
-  );
-  const next = useCallback(() => go(current + 1), [current, go]);
+  const [page, setPage] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    timerRef.current = setTimeout(next, INTERVAL);
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    };
-  }, [current, next]);
+    if (paused) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    const t = setTimeout(() => setPage((p) => (p + 1) % reviews.length), INTERVAL);
+    return () => clearTimeout(t);
+  }, [page, paused]);
 
-  const r = reviews[current];
+  const r = reviews[page];
 
   return (
-    <section id="opiniones" className="relative h-[60vh] overflow-hidden bg-black">
-      <div className="absolute inset-0">
-        <img src={BG} alt="" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-black/20" />
-      </div>
+    <section
+      id="opiniones"
+      aria-roledescription="carrusel"
+      aria-label="Opiniones de clientes"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+      className="relative scroll-mt-20 overflow-hidden bg-heading py-20 sm:py-28"
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={photos.reviews} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+      <div className="absolute inset-0 bg-[#3d322c]/70" />
 
-      <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-center px-5 sm:px-6">
-        <span className="text-sm font-extrabold uppercase tracking-widest text-amber">
-          Lo que dicen
-        </span>
+      <div className="relative mx-auto max-w-[1000px] px-5">
+        <p className="font-display text-[15px] font-semibold text-amber">Lo que dicen de nosotros</p>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="mt-5 max-w-2xl"
-          >
-            <blockquote className="font-display text-3xl font-black leading-snug text-cream sm:text-4xl">
-              &ldquo;{r.text}&rdquo;
-            </blockquote>
-
-            <div className="mt-8 flex items-center gap-4">
-              <img
-                src={r.avatar}
-                alt={r.name}
-                className="h-14 w-14 rounded-full object-cover ring-2 ring-cream/30"
-              />
-              <div>
-                <p className="font-bold text-cream">{r.name},</p>
-                <p className="text-sm text-cream/70">{r.place}</p>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+        <figure key={page} className="mt-8 max-w-3xl" aria-live={paused ? "polite" : "off"}>
+          <blockquote className="font-display text-3xl font-bold leading-[1.25] text-white sm:text-4xl">“{r.text}”</blockquote>
+          <figcaption className="mt-8 flex items-center gap-4 text-white">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={r.avatar} alt="" width={56} height={56} className="h-14 w-14 rounded-full object-cover" />
+            <span className="text-[15px] leading-snug">
+              {r.name},
+              <br />
+              {r.place}
+            </span>
+          </figcaption>
+        </figure>
 
         <div className="mt-10 flex flex-wrap items-center gap-6">
-          <a
-            href="#cotizar"
-            className="inline-flex items-center gap-2 rounded-full bg-amber px-6 py-3 text-base font-bold text-ink transition-transform hover:-translate-y-0.5"
-          >
-            Más reseñas
+          <a href="#cotizar" className="rounded-full bg-amber px-8 py-4 font-display text-[13px] font-semibold uppercase tracking-wide text-heading transition-colors hover:bg-white">
+            Cotiza tu mudanza
           </a>
-          <div className="flex items-center gap-2">
-            <div className="flex text-amber">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-5 w-5" />
-              ))}
-            </div>
-            <span className="text-sm font-semibold text-cream/80">
-              4.9 / 5 · +400 reseñas
-            </span>
+          <div className="flex gap-2" role="group" aria-label="Elegir opinión">
+            {reviews.map((rv, i) => (
+              <button
+                key={rv.name}
+                type="button"
+                onClick={() => setPage(i)}
+                aria-label={`Ver la opinión de ${rv.name}`}
+                aria-current={i === page ? "true" : undefined}
+                className="grid h-7 w-7 place-items-center"
+              >
+                <span className={`block h-2.5 rounded-full transition-all ${i === page ? "w-7 bg-amber" : "w-2.5 bg-white/60"}`} />
+              </button>
+            ))}
           </div>
-        </div>
-
-        <div className="mt-10 flex items-center gap-2">
-          {reviews.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => go(i)}
-              aria-label={`Ir a la reseña ${i + 1}`}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                i === current ? "w-8 bg-amber" : "w-2 bg-cream/30 hover:bg-cream/60"
-              }`}
-            />
-          ))}
         </div>
       </div>
     </section>

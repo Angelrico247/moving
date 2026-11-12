@@ -12,10 +12,14 @@
   --color-slate: #9a8a78;
   --color-line: #ddd0bf;
   --color-teal: #5f8a6a;
+  --color-heading: #5b4d44;
+  /* Dorado oscuro para textos pequeños sobre fondo claro (el amarillo del tema no llega a contraste). */
+  --color-gold: #8a6700;
+  --color-body: #756a62;
 
   /* Tipografía (vars inyectadas por next/font en layout.tsx) */
-  --font-display: var(--font-raleway), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-roboto-slab), ui-serif, Georgia, serif;
 }
 
 :root {

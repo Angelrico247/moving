@@ -1,61 +1,34 @@
 import Reveal from "./Reveal";
+import { Phone, Packing, Trolley, Box } from "./icons";
 
 const steps = [
-  {
-    n: "01",
-    title: "Cotizas",
-    desc: "Nos dices qué mueves y a dónde. Te damos precio cerrado por WhatsApp o teléfono.",
-  },
-  {
-    n: "02",
-    title: "Agendamos",
-    desc: "Eliges día y hora. Confirmamos camión y cuadrilla para tu mudanza.",
-  },
-  {
-    n: "03",
-    title: "Empacamos y cargamos",
-    desc: "Llegamos puntuales, protegemos todo y lo subimos con cuidado a la unidad.",
-  },
-  {
-    n: "04",
-    title: "Entregamos y acomodamos",
-    desc: "Descargamos en tu nuevo lugar y dejamos los muebles donde los quieres.",
-  },
+  { icon: Phone, label: "Cotizas con nosotros" },
+  { icon: Packing, label: "Empacamos tus cosas" },
+  { icon: Trolley, label: "Movemos tus cosas" },
+  { icon: Box, label: "Desempacamos y acomodamos" },
 ];
 
+/** "Our moving process": franja café con cuatro pasos en línea y flechas entre ellos. */
 export default function Process() {
   return (
-    <section id="proceso" className="relative overflow-hidden bg-brown py-20 text-cream sm:py-28 bg-route">
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+    <section id="proceso" className="scroll-mt-20 bg-brown py-16 sm:py-20">
+      <div className="mx-auto max-w-[1000px] px-5">
         <Reveal>
-          <div className="max-w-2xl">
-            <span className="text-sm font-extrabold uppercase tracking-widest text-amber">
-              Así de fácil
-            </span>
-            <h2 className="mt-3 font-display text-4xl font-black tracking-tight sm:text-5xl">
-              Mudarte en 4 pasos
-            </h2>
-          </div>
+          <p className="font-display text-[15px] font-semibold text-white">Nuestro proceso</p>
+          <h2 className="mt-3 font-display text-5xl font-bold tracking-tight text-white sm:text-6xl">Mudarte es fácil</h2>
         </Reveal>
 
-        <div className="relative mt-14 grid gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-          {/* línea conectora en desktop */}
-          <div
-            aria-hidden
-            className="absolute left-0 right-0 top-7 hidden h-px bg-cream/15 lg:block"
-          />
-          {steps.map((s, i) => (
-            <Reveal key={s.n} delay={i * 90} className="relative lg:pr-8">
-              <span className="relative z-10 grid h-14 w-14 place-items-center bg-amber font-display text-lg font-black text-ink">
-                {s.n}
-              </span>
-              <h3 className="mt-5 font-display text-xl font-extrabold">{s.title}</h3>
-              <p className="mt-2 max-w-xs text-sm leading-relaxed text-cream/85">
-                {s.desc}
-              </p>
-            </Reveal>
+        <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map(({ icon: Icon, label }, i) => (
+            <li key={label}>
+              <Reveal delay={i * 90} className="flex items-center gap-4">
+                <Icon className="h-12 w-12 shrink-0 text-white" strokeWidth={1.2} aria-hidden />
+                <span className="font-display text-[15px] font-semibold leading-snug text-white">{label}</span>
+                {i < steps.length - 1 && <span aria-hidden className="ml-auto hidden text-white/60 lg:block">›</span>}
+              </Reveal>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

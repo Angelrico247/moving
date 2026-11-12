@@ -29,13 +29,11 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-paper py-20 sm:py-28">
-      <div className="mx-auto max-w-3xl px-5 sm:px-6">
-        <div className="text-center">
-          <span className="text-sm font-extrabold uppercase tracking-widest text-amber-deep">
-            Preguntas frecuentes
-          </span>
-          <h2 className="mt-3 font-display text-4xl font-black tracking-tight text-ink sm:text-5xl">
+    <section id="faq" className="scroll-mt-20 bg-white py-16 sm:py-24">
+      <div className="mx-auto max-w-[1000px] px-5">
+        <div>
+          <p className="font-display text-[15px] font-semibold text-gold">Preguntas frecuentes</p>
+          <h2 className="mt-3 font-display text-5xl font-bold tracking-tight text-heading sm:text-6xl">
             Antes de que preguntes
           </h2>
         </div>
@@ -50,7 +48,7 @@ export default function Faq() {
                   className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-display text-lg font-extrabold text-ink">
+                  <span className="font-display text-lg font-semibold text-heading">
                     {f.q}
                   </span>
                   <span
@@ -70,7 +68,7 @@ export default function Faq() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-6 pb-5 text-[15px] leading-relaxed text-slate">
+                    <p className="px-6 pb-5 text-[15px] leading-relaxed text-body">
                       {f.a}
                     </p>
                   </div>

@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
-import { Raleway, Barlow } from "next/font/google";
+import { Poppins, Roboto_Slab } from "next/font/google";
 import { IntroProvider } from "@/components/IntroLoader";
 import "./globals.css";
 
-const raleway = Raleway({
+// Poppins: títulos, menú y botones (como el tema MoveMe). Roboto Slab: texto corrido.
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["600", "700", "800", "900"],
-  variable: "--font-raleway",
+  weight: ["500", "600", "700"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
-const barlow = Barlow({
+const robotoSlab = Roboto_Slab({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-barlow",
+  weight: ["300", "400", "500"],
+  variable: "--font-roboto-slab",
   display: "swap",
 });
 
@@ -72,7 +73,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={`${raleway.variable} ${barlow.variable}`}>
+    <html lang="es" className={`${poppins.variable} ${robotoSlab.variable}`}>
       <head>
         <script
           type="application/ld+json"

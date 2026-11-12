@@ -1,209 +1,49 @@
-import Image from "next/image";
 import Reveal from "./Reveal";
-import { Check, Clock, ArrowRight } from "./icons";
-import { site, waLink } from "./site";
+import { photos, waLink, site } from "./site";
 
-type Pkg = {
-  name: string;
-  hours: string;
-  price: string;
-  best?: boolean;
-  ideal: string;
-  crew: string;
-  features: string[];
-  img: string;
-};
-
-/*
-  Imágenes de cabecera: reemplaza cada `img` por la ruta real
-  (p.ej. "/images/paquete-express.jpg"). Las URLs de abajo son placeholders.
-*/
-const packages: Pkg[] = [
-  {
-    name: "Express",
-    hours: "3 horas",
-    price: "1,290",
-    ideal: "Departamento o estudio",
-    crew: "Camión chico + 2 cargadores",
-    features: [
-      "Carga, traslado y descarga",
-      "Cobijas y cinchos para proteger",
-      "1 destino dentro de la ciudad",
-    ],
-    img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=75",
-  },
-  {
-    name: "Hogar",
-    hours: "6 horas",
-    price: "2,490",
-    best: true,
-    ideal: "Casa de 2 a 3 recámaras",
-    crew: "Camión mediano + 3 cargadores",
-    features: [
-      "Todo lo del Express",
-      "Desarmado y armado de camas",
-      "Seguro de carga incluido",
-      "Hasta 2 destinos",
-    ],
-    img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=75",
-  },
-  {
-    name: "Total",
-    hours: "Jornada (10 h)",
-    price: "3,990",
-    ideal: "Casa grande u oficina",
-    crew: "Camión grande + 4 cargadores",
-    features: [
-      "Todo lo del Hogar",
-      "Empaque de cocina y frágiles",
-      "Coordinador de mudanza",
-      "Rutas foráneas bajo cotización",
-    ],
-    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=75",
-  },
+const packs = [
+  { name: "Express", price: "1,290", hours: "3 horas", img: photos.express, note: "Departamento o estudio" },
+  { name: "Hogar", price: "2,490", hours: "6 horas", img: photos.hogar, note: "Casa de 2 a 3 recámaras" },
+  { name: "Total", price: "3,990", hours: "Jornada de 10 horas", img: photos.total, note: "Casa grande u oficina" },
 ];
 
+/** "We can help you with": tres tarjetas con foto, nombre del paquete y precio inicial. */
 export default function Packages() {
   return (
-    <section id="paquetes" className="bg-cream py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+    <section id="precios" className="scroll-mt-20 bg-white py-16 sm:py-24">
+      <div className="mx-auto max-w-[1000px] px-5">
         <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="text-sm font-extrabold uppercase tracking-widest text-amber-deep">
-              Paga solo por el tiempo que necesitas
-            </span>
-            <h2 className="mt-3 font-display text-4xl font-black tracking-tight text-ink sm:text-5xl">
-              Paquetes por horas
-            </h2>
-            <p className="mt-4 text-lg font-bold text-slate">
-              Eliges un bloque de horas con camión y cuadrilla incluidos. Si
-              acabas antes, te queda de sobra; si necesitas más, la hora extra
-              tiene precio fijo.
-            </p>
-          </div>
+          <p className="font-display text-[15px] font-semibold text-gold">Servicios pensados para ti</p>
+          <h2 className="mt-3 font-display text-5xl font-bold tracking-tight text-heading sm:text-6xl">Te ayudamos con:</h2>
         </Reveal>
 
-        <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-3">
-          {packages.map((p, i) => (
+        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+          {packs.map((p, i) => (
             <Reveal key={p.name} delay={i * 90}>
-              <div
-                className={`flex h-full flex-col overflow-hidden border transition-transform hover:-translate-y-1 ${
-                  p.best
-                    ? "border-transparent shadow-2xl shadow-ink/25 lg:-mt-4"
-                    : "border-line"
-                }`}
+              <a
+                href={waLink(`Hola ${site.name}, quiero cotizar el paquete ${p.name} (${p.hours}).`)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block aspect-square overflow-hidden bg-heading"
               >
-                {/* Cabecera con imagen de fondo */}
-                <div className="relative h-44 shrink-0 overflow-hidden">
-                  <Image
-                    src={p.img}
-                    alt={`Paquete ${p.name}`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                  />
-                  <div
-                    className={`absolute inset-0 ${
-                      p.best ? "bg-ink/70" : "bg-ink/55"
-                    }`}
-                  />
-                  <div className="absolute inset-x-0 bottom-0 p-5">
-                    <div className="flex items-center justify-between">
-                      <h3 className="font-display text-2xl font-black text-cream">
-                        {p.name}
-                      </h3>
-                      {p.best && (
-                        <span className="bg-amber px-3 py-1 text-xs font-bold text-ink">
-                          Más elegido
-                        </span>
-                      )}
-                    </div>
-                    <div className="mt-1 flex items-center gap-2 text-sm text-cream/70">
-                      <Clock className="h-4 w-4" />
-                      {p.hours}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Cuerpo de la tarjeta */}
-                <div
-                  className={`flex flex-1 flex-col p-7 ${
-                    p.best ? "bg-ink text-cream bg-route" : "bg-paper text-ink"
-                  }`}
-                >
-                  <div className="flex items-end gap-1.5">
-                    <span
-                      className={`text-sm ${
-                        p.best ? "text-cream/60" : "text-slate"
-                      }`}
-                    >
-                      desde
-                    </span>
-                    <span className="font-display text-5xl font-black">
-                      ${p.price}
-                    </span>
-                    <span
-                      className={`mb-1.5 text-sm ${
-                        p.best ? "text-cream/60" : "text-slate"
-                      }`}
-                    >
-                      MXN
-                    </span>
-                  </div>
-
-                  <p
-                    className={`mt-4 text-sm font-semibold ${
-                      p.best ? "text-amber" : "text-amber-deep"
-                    }`}
-                  >
-                    {p.ideal}
-                  </p>
-                  <p
-                    className={`text-sm ${
-                      p.best ? "text-cream/70" : "text-slate"
-                    }`}
-                  >
-                    {p.crew}
-                  </p>
-
-                  <ul className="mt-6 space-y-3 text-sm">
-                    {p.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2.5">
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
-                        <span
-                          className={p.best ? "text-cream/90" : "text-ink/80"}
-                        >
-                          {f}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <a
-                    href={waLink(
-                      `Hola ${site.name}, me interesa el Paquete ${p.name} (${p.hours}). ¿Me ayudan a cotizar?`
-                    )}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`group mt-auto pt-3 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-base font-bold transition-transform hover:-translate-y-0.5 ${
-                      p.best ? "bg-amber text-ink" : "bg-ink text-cream"
-                    }`}
-                  >
-                    Elegir {p.name}
-                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-                  </a>
-                </div>
-              </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={p.img} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <span className="absolute inset-0 bg-black/45" />
+                <span className="absolute inset-x-0 bottom-0 flex flex-col gap-1.5 p-7">
+                  <span className="font-display text-3xl font-bold leading-tight text-white">Paquete {p.name}</span>
+                  <span className="font-display text-[15px] font-semibold text-gold">desde ${p.price} MXN</span>
+                  <span className="text-[13px] text-white/90">{p.hours} · {p.note}</span>
+                  <span className="sr-only">(abre WhatsApp en una pestaña nueva)</span>
+                </span>
+              </a>
             </Reveal>
           ))}
         </div>
 
         <Reveal>
-          <p className="mt-8 text-center text-sm text-slate">
-            ¿No sabes qué paquete te toca? Mándanos fotos por WhatsApp y te
-            decimos en minutos. Hora extra desde{" "}
-            <strong className="text-ink">$290</strong>.
-          </p>
+          <a href="#servicios" className="mt-10 inline-block rounded-full bg-amber px-8 py-4 font-display text-[13px] font-semibold uppercase tracking-wide text-heading transition-colors hover:bg-heading hover:text-white">
+            Más servicios
+          </a>
         </Reveal>
       </div>
     </section>
