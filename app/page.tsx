@@ -20,7 +20,7 @@ export default function Home() {
     <>
       <TopBar />
       <Header />
-      <main>
+      <main id="contenido" tabIndex={-1} className="outline-none">
         <Hero />
         <QuoteForm />
         <Packages />

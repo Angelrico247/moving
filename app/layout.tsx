@@ -81,6 +81,12 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
+        <a
+          href="#contenido"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-white focus:px-6 focus:py-3 focus:font-display focus:text-sm focus:font-semibold focus:text-heading"
+        >
+          Saltar al contenido
+        </a>
         <IntroProvider>{children}</IntroProvider>
       </body>
     </html>

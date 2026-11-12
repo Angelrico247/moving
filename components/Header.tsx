@@ -16,6 +16,15 @@ export default function Header() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
   // Píldora activa según la sección visible.
   useEffect(() => {
     const ids = nav.map((n) => n.href.slice(1));

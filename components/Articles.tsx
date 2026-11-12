@@ -23,7 +23,7 @@ export default function Articles() {
               <article className="relative aspect-square overflow-hidden bg-heading">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={a.img} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-                <div className="absolute inset-0 bg-black/45" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/30" />
                 <div className="absolute inset-x-0 bottom-0 p-6">
                   <h3 className="font-display text-xl font-bold leading-snug text-white">{a.title}</h3>
                   <p className="mt-3 font-display text-[13px] font-semibold text-amber">{a.tag}</p>

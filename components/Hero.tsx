@@ -17,7 +17,7 @@ export default function Hero() {
     <section id="top" className="relative flex min-h-[560px] items-center overflow-hidden bg-heading lg:min-h-[640px]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={photos.hero} alt="" className="absolute inset-0 h-full w-full object-cover object-center" fetchPriority="high" />
-      <div className="absolute inset-0 bg-black/45" />
+      <div className="absolute inset-0 bg-black/55" />
 
       <motion.div
         variants={container}
@@ -25,7 +25,7 @@ export default function Hero() {
         animate="visible"
         className="relative mx-auto w-full max-w-[1000px] px-5 py-20"
       >
-        <motion.p variants={item} className="font-display text-sm font-semibold uppercase tracking-wider text-amber">
+        <motion.p variants={item} className="font-display text-sm font-semibold uppercase tracking-wider text-white">
           Cotización gratis
         </motion.p>
         <motion.h1

@@ -31,7 +31,7 @@ export default function QuoteForm() {
   };
 
   const field =
-    "h-12 w-full rounded-full border-0 bg-white/25 px-5 text-[14px] text-white placeholder:text-white/80 outline-none transition focus:bg-white/35 focus-visible:ring-2 focus-visible:ring-white [&>option]:text-heading";
+    "h-12 w-full rounded-full border-0 bg-[#3d322c]/45 px-5 text-[14px] text-white placeholder:text-white/85 outline-none transition focus:bg-[#3d322c]/60 [&>option]:text-heading";
   const label = "mb-2 block font-display text-[14px] font-semibold text-white";
 
   return (

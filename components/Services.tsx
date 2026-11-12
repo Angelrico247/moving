@@ -41,9 +41,9 @@ export default function Services() {
           <div className="relative flex min-h-[340px] flex-col justify-center overflow-hidden bg-heading p-8 sm:p-10">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={photos.ask} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-black/50" />
+            <div className="absolute inset-0 bg-black/60" />
             <div className="relative">
-              <p className="font-display text-[15px] font-semibold text-gold">¿Mudarte parece difícil?</p>
+              <p className="font-display text-[15px] font-semibold text-white">¿Mudarte parece difícil?</p>
               <p className="mt-3 font-display text-4xl font-bold leading-[1.05] text-white">¿Tienes una pregunta?</p>
               <a
                 href={waLink(`Hola ${site.name}, tengo una pregunta sobre mi mudanza.`)}

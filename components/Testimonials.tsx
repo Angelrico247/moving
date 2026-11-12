@@ -29,15 +29,16 @@ const INTERVAL = 6500;
 /** "People about us": opiniones grandes en blanco sobre una foto con velo; avanzan solas y se pueden pausar. */
 export default function Testimonials() {
   const [page, setPage] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [paused, setPaused] = useState(false); // pausa por hover/foco
+  const [userPaused, setUserPaused] = useState(false); // pausa con el botón (WCAG 2.2.2)
 
   useEffect(() => {
-    if (paused) return;
+    if (paused || userPaused) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
     const t = setTimeout(() => setPage((p) => (p + 1) % reviews.length), INTERVAL);
     return () => clearTimeout(t);
-  }, [page, paused]);
+  }, [page, paused, userPaused]);
 
   const r = reviews[page];
 
@@ -57,9 +58,9 @@ export default function Testimonials() {
       <div className="absolute inset-0 bg-[#3d322c]/70" />
 
       <div className="relative mx-auto max-w-[1000px] px-5">
-        <p className="font-display text-[15px] font-semibold text-amber">Lo que dicen de nosotros</p>
+        <p className="font-display text-[15px] font-semibold text-white">Lo que dicen de nosotros</p>
 
-        <figure key={page} className="mt-8 max-w-3xl" aria-live={paused ? "polite" : "off"}>
+        <figure key={page} className="mt-8 max-w-3xl" aria-live={paused || userPaused ? "polite" : "off"}>
           <blockquote className="font-display text-3xl font-bold leading-[1.25] text-white sm:text-4xl">“{r.text}”</blockquote>
           <figcaption className="mt-8 flex items-center gap-4 text-white">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -90,6 +91,16 @@ export default function Testimonials() {
               </button>
             ))}
           </div>
+          <button
+            type="button"
+            onClick={() => setUserPaused((v) => !v)}
+            aria-label={userPaused ? "Reanudar rotación automática" : "Pausar rotación automática"}
+            className="grid h-9 w-9 place-items-center rounded-full border border-white/70 text-white"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5" aria-hidden>
+              {userPaused ? <path d="M8 5v14l11-7z" /> : <path d="M7 5h4v14H7zM13 5h4v14h-4z" />}
+            </svg>
+          </button>
         </div>
       </div>
     </section>

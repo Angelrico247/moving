@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import { TruckDetailed } from "./icons";
 
 const IntroContext = createContext(true);
@@ -35,12 +35,15 @@ export function IntroProvider({ children }: { children: ReactNode }) {
 
   return (
     <IntroContext.Provider value={ready}>
+      <MotionConfig reducedMotion="user">
       <AnimatePresence>
         {showOverlay && (
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
+            role="status"
+            aria-label="Cargando MovIng"
             className="fixed inset-0 z-[100] flex items-center justify-center bg-cream"
           >
             <motion.div
@@ -51,13 +54,14 @@ export function IntroProvider({ children }: { children: ReactNode }) {
             >
               <TruckDetailed className="h-20 w-20 text-ink sm:h-24 sm:w-24" />
               <span className="font-display text-2xl font-black tracking-tight text-ink sm:text-3xl">
-                Mov<span className="text-amber">Ing</span>
+                Mov<span className="text-gold">Ing</span>
               </span>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
       {children}
+      </MotionConfig>
     </IntroContext.Provider>
   );
 }

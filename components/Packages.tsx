@@ -28,7 +28,7 @@ export default function Packages() {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={p.img} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <span className="absolute inset-0 bg-black/45" />
+                <span className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/30" />
                 <span className="absolute inset-x-0 bottom-0 flex flex-col gap-1.5 p-7">
                   <span className="font-display text-3xl font-bold leading-tight text-white">Paquete {p.name}</span>
                   <span className="font-display text-[15px] font-semibold text-gold">desde ${p.price} MXN</span>
