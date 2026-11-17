@@ -54,7 +54,7 @@ export function IntroProvider({ children }: { children: ReactNode }) {
             >
               <TruckDetailed className="h-20 w-20 text-ink sm:h-24 sm:w-24" />
               <span className="font-display text-2xl font-black tracking-tight text-ink sm:text-3xl">
-                Mov<span className="text-gold">Ing</span>
+                Mov<span className="text-amber">Ing</span>
               </span>
             </motion.div>
           </motion.div>

@@ -8,14 +8,14 @@ export default function AppCta() {
   return (
     <section className="overflow-hidden bg-white pt-16 sm:pt-24">
       <div className="mx-auto grid max-w-[1000px] items-center gap-12 px-5 lg:grid-cols-[0.8fr_1.2fr]">
-        <Reveal>
+        <Reveal className="pb-16 sm:pb-24">
           {/* Teléfono hecho con CSS: marco, bocina y la portada del sitio adentro */}
-          <div aria-hidden className="mx-auto h-[420px] w-[250px] overflow-hidden rounded-t-[42px] border-[7px] border-b-0 border-[#d5d2cd] bg-white lg:mx-0">
+          <div aria-hidden className="mx-auto h-[460px] w-[250px] overflow-hidden rounded-[42px] border-[7px] border-[#d5d2cd] bg-white lg:mx-0">
             <div className="mx-auto mt-3 h-1.5 w-16 rounded-full bg-[#d5d2cd]" />
             <div className="flex items-center justify-between px-4 py-5">
               <span className="flex items-center gap-2 text-heading">
                 <LogoMark size="sm" />
-                <b className="font-display text-lg">Mov<span className="text-gold">Ing</span></b>
+                <b className="font-display text-lg">Mov<span className="text-amber">Ing</span></b>
               </span>
               <span className="grid h-8 w-8 place-items-center bg-brown text-white"><Menu className="h-5 w-5" /></span>
             </div>

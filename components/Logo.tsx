@@ -1,9 +1,9 @@
 import { TruckDetailed } from "./icons";
 
 const SIZES = {
-  sm: { mark: "h-8 w-8", icon: "h-4 w-4", text: "text-lg" },
-  md: { mark: "h-9 w-9", icon: "h-5 w-5", text: "text-xl" },
-  lg: { mark: "h-16 w-16", icon: "h-8 w-8", text: "text-3xl" },
+  sm: { mark: "h-8 w-8", icon: "h-5 w-5", text: "text-lg" },
+  md: { mark: "h-10 w-10", icon: "h-6 w-6", text: "text-xl" },
+  lg: { mark: "h-16 w-16", icon: "h-10 w-10", text: "text-3xl" },
 } as const;
 
 export function LogoMark({
@@ -16,9 +16,9 @@ export function LogoMark({
   const s = SIZES[size];
   return (
     <span
-      className={`grid shrink-0 place-items-center rounded-full bg-brown text-white ${s.mark} ${className}`}
+      className={`grid shrink-0 place-items-center rounded-full bg-amber text-heading ${s.mark} ${className}`}
     >
-      <TruckDetailed className={s.icon} />
+      <TruckDetailed className={s.icon} strokeWidth={2.2} />
     </span>
   );
 }
@@ -38,7 +38,7 @@ export function Logo({
       <LogoMark size={size} />
       <span className="leading-none">
         <span className={`block font-display font-bold tracking-tight text-heading ${s.text}`}>
-          Mov<span className="text-gold">Ing</span>
+          Mov<span className="text-amber">Ing</span>
         </span>
         <span className="mt-1 block text-[11px] font-medium text-body">Mudanzas</span>
       </span>
