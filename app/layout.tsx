@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Poppins, Roboto_Slab } from "next/font/google";
+import { Poppins } from "next/font/google";
+import localFont from "next/font/local";
 import { IntroProvider } from "@/components/IntroLoader";
 import "./globals.css";
 
@@ -11,9 +12,11 @@ const poppins = Poppins({
   display: "swap",
 });
 
-const robotoSlab = Roboto_Slab({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
+// Roboto Slab va alojada en el proyecto (fuente variable 300–500): la descarga desde Google en CI fallaba.
+const robotoSlab = localFont({
+  src: "./fonts/roboto-slab-latin.woff2",
+  weight: "300 500",
+  style: "normal",
   variable: "--font-roboto-slab",
   display: "swap",
 });
