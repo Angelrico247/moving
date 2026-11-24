@@ -64,12 +64,6 @@ const jsonLd = {
     { "@type": "City", name: "Tonalá" },
   ],
   priceRange: "$$",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "400",
-    bestRating: "5",
-  },
 };
 
 export default function RootLayout({
