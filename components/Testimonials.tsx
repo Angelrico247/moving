@@ -5,21 +5,21 @@ import { photos } from "./site";
 
 const reviews = [
   {
-    text: "Llegaron a tiempo, envolvieron todo y en 5 horas ya estaba en mi casa nueva. Ni un rayón. Vale cada peso.",
-    name: "Mariana Ríos",
-    place: "Providencia, GDL",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    name: "Nombre Apellido",
+    place: "Lorem ipsum",
     avatar: "https://i.pravatar.cc/80?img=47",
   },
   {
-    text: "Pedí el paquete de 6 horas para una casa de 3 recámaras y alcanzó perfecto. El coordinador súper atento.",
-    name: "Luis Fernando G.",
-    place: "Zapopan",
+    text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    name: "Nombre Apellido",
+    place: "Lorem ipsum",
     avatar: "https://i.pravatar.cc/80?img=12",
   },
   {
-    text: "Movieron la oficina un domingo para no parar operaciones. Profesionales y sin sorpresas en el precio.",
-    name: "Daniela Pérez",
-    place: "Andares",
+    text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    name: "Nombre Apellido",
+    place: "Lorem ipsum",
     avatar: "https://i.pravatar.cc/80?img=56",
   },
 ];
