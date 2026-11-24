@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import { IntroProvider } from "@/components/IntroLoader";
 import "./globals.css";
+import DemoNotice from "@/components/DemoNotice";
 
 // Poppins: títulos, menú y botones (como el tema MoveMe). Roboto Slab: texto corrido.
 const poppins = Poppins({
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   description:
     "Paquetes de mudanza por horas en Guadalajara: camión, cuadrilla y seguro incluidos. Cotiza tu mudanza local o foránea en minutos.",
   keywords: ["mudanzas guadalajara", "fletes guadalajara", "mudanza por horas", "camión de mudanza", "servicio de mudanza zapopan"],
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "MovIng · Mudanzas sin estrés en Guadalajara",
     description:
@@ -48,9 +49,6 @@ const jsonLd = {
   name: "MovIng Mudanzas",
   description:
     "Paquetes de mudanza por horas en Guadalajara. Camión, cuadrilla y seguro incluidos. Precio cerrado, sin sorpresas.",
-  url: "https://enruta.mx",
-  telephone: "+52-33-1234-5678",
-  email: "hola@enruta.mx",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Guadalajara",
@@ -85,6 +83,7 @@ export default function RootLayout({
           Saltar al contenido
         </a>
         <IntroProvider>{children}</IntroProvider>
+        <DemoNotice />
       </body>
     </html>
   );
